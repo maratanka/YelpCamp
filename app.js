@@ -6,7 +6,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 var campgrounds = [
-    {name:"Green Meadow", image:"https://www.backpacker.com/.image/t_share/MTQ0OTEzOTMwMTIzNDg2OTQ5/nighttent_sblack_craterlake5323_750x400.jpg"},
+    {name:"Green Meadow", image:"http://www.verticepatagonia.com/sites/default/files/styles/full-width-preface-header-wide/public/dickson-camping-01.jpg?itok=U3vPocaJ"},
+    {name:"Yellow Sun", image:"https://www.camping.ch/gfx/campsites/1.053.bild1.jpg"},
+    {name:"Crazy Frogs", image:"https://static.pexels.com/photos/27865/pexels-photo-27865.jpg"},
+    {name:"Green Meadow", image:"http://www.verticepatagonia.com/sites/default/files/styles/full-width-preface-header-wide/public/dickson-camping-01.jpg?itok=U3vPocaJ"},
     {name:"Yellow Sun", image:"https://www.camping.ch/gfx/campsites/1.053.bild1.jpg"},
     {name:"Crazy Frogs", image:"https://static.pexels.com/photos/27865/pexels-photo-27865.jpg"}
 ];
