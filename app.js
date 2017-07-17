@@ -1,27 +1,50 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-
+var express = require("express"),
+    app = express(),
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose")
+    
+    
+mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-var campgrounds = [
-    {name:"Green Meadow", image:"http://www.verticepatagonia.com/sites/default/files/styles/full-width-preface-header-wide/public/dickson-camping-01.jpg?itok=U3vPocaJ"},
-    {name:"Yellow Sun", image:"https://www.camping.ch/gfx/campsites/1.053.bild1.jpg"},
-    {name:"Crazy Frogs", image:"https://static.pexels.com/photos/27865/pexels-photo-27865.jpg"},
-    {name:"Green Meadow", image:"http://www.verticepatagonia.com/sites/default/files/styles/full-width-preface-header-wide/public/dickson-camping-01.jpg?itok=U3vPocaJ"},
-    {name:"Yellow Sun", image:"https://www.camping.ch/gfx/campsites/1.053.bild1.jpg"},
-    {name:"Crazy Frogs", image:"https://static.pexels.com/photos/27865/pexels-photo-27865.jpg"}
-];
-
-app.get("/", function(req, res){
-   res.render("landing");
+//SCHEMA SETUP
+var campgroundSchema = new mongoose.Schema({
+   name: String,
+   image: String
 });
 
-app.get("/campgrounds", function(req, res){
+var Campground = mongoose.model("Campground", campgroundSchema)
+
+Campground.create(
+    {
+        name:"Crazy Frogs", 
+        image:"https://static.pexels.com/photos/27865/pexels-photo-27865.jpg"
+    }, function(err, campground){
+        if(err){
+            console.log(err)
+        } else {
+            console.log("NEWLY CREATED CAMPGROUND: ");
+            console.log(campground);
+        }
+    });
     
-    res.render("campgrounds", {campgrounds:campgrounds});
+app.get("/campgrounds", function(req, res){
+       res.render("landing");
+});    
+    
+app.get("/", function(req, res){
+    //GET all campgrounds from DB
+    Campground.find({}, function(err, allCampgrounds){
+       if(err){
+           console.log(err);
+       } else {
+            res.render("campgrounds", {campgrounds:allCampgrounds});
+       }
+    });
+ 
 });
+
 
 app.post("/campgrounds", function(req, res){
     //get data from form and add to campgrounds array
@@ -29,8 +52,14 @@ app.post("/campgrounds", function(req, res){
     var image = req.body.image;
     var newCampground = {name: name, image: image};
     campgrounds.push(newCampground);
-    //redirect back to campground page
-    res.redirect("/campgrounds");
+    // Create new campground and save to DB
+    Campground.create(newCampground, function(err, newlyCreated){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect("/campgrounds"); 
+        }
+    });
 });
 
 app.get("/campgrounds/new", function(req, res) {
