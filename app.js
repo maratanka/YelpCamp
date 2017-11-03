@@ -6,7 +6,7 @@ var express     = require("express"),
     Comment     = require("./models/comment"),
     seedDB      = require("./seeds")
     
-mongoose.connect("mongodb://localhost/yelp_camp_v4");
+mongoose.connect("mongodb://localhost/yelp_camp_v5");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 seedDB();
@@ -77,8 +77,10 @@ app.get("/campgrounds/:id/comments/new", function(req, res) {
     //find campground by id
     Campground.findById(req.params.id, function(err, campground){
        if(err){
+           console.log("jestem tutaj error");
            console.log(err);
        } else {
+           console.log("jestem tutaj, campground");
            res.render("comments/new", {campground:campground});
        }
     })
