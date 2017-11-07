@@ -6,19 +6,20 @@ var data = [
     {
         name: "Cloud' Rest", 
         image: "https://farm3.staticflickr.com/2259/2182093741_164dc44a24.jpg",
-        description: "blah blah blah"
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis mi at efficitur laoreet. Pellentesque molestie dignissim ipsum a bibendum. Nulla varius ultrices tempor. Fusce molestie, eros vel consequat bibendum, est quam mollis lacus, placerat fermentum nulla orci eu mi. Vivamus commodo felis eu malesuada maximus. Phasellus laoreet tellus sed mauris rhoncus cursus. Suspendisse tempus vestibulum sapien sed faucibus."
     },
     {
         name: "Desert Mesa", 
         image: "https://farm5.staticflickr.com/4027/4368764673_c8345bd602.jpg",
-        description: "blah blah blah"
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis mi at efficitur laoreet. Pellentesque molestie dignissim ipsum a bibendum. Nulla varius ultrices tempor. Fusce molestie, eros vel consequat bibendum, est quam mollis lacus, placerat fermentum nulla orci eu mi. Vivamus commodo felis eu malesuada maximus. Phasellus laoreet tellus sed mauris rhoncus cursus. Suspendisse tempus vestibulum sapien sed faucibus."
     },    
     {
         name: "Canyon Floor", 
         image: "https://farm5.staticflickr.com/4014/4675753683_fd631f254f.jpg",
-        description: "blah blah blah"
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis mi at efficitur laoreet. Pellentesque molestie dignissim ipsum a bibendum. Nulla varius ultrices tempor. Fusce molestie, eros vel consequat bibendum, est quam mollis lacus, placerat fermentum nulla orci eu mi. Vivamus commodo felis eu malesuada maximus. Phasellus laoreet tellus sed mauris rhoncus cursus. Suspendisse tempus vestibulum sapien sed faucibus."
     }
 ]
+
 
 function seedDB(){
    //Remove all campgrounds
